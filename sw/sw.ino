@@ -3,17 +3,19 @@
 
 // Define the number of buttons, rows, and columns
 #define TOTAL_BUTTONS 24
-#define TOTAL_ROWS 6
-#define TOTAL_COLS 4
+#define TOTAL_ROWS 6 //Red wires
+#define TOTAL_COLS 4 //Blue wires
 
 // Define the layout of the buttons on the keypad
 byte buttonLayout[TOTAL_ROWS][TOTAL_COLS] = {
-  {0, 1, 2, 3, 4},
-  {5, 6, 7, 8, 9},
-  {10, 11, 12, 13, 14},
-  {15, 16, 17, 18, 19},
-  {20, 21, 22, 23},
+  {0, 1, 2, 3},
+  {4, 5, 6, 7},
+  {8, 9, 10, 11},
+  {12, 13, 14, 15},
+  {16, 17, 18, 19},
+  {20, 21, 22, 23}
 };
+
 
 // Define the pins connected to the rows and columns of the keypad
 byte rowConnections[TOTAL_ROWS] = {10, 11, 12, 13, 14, 15}; // Red wires
@@ -28,12 +30,27 @@ Joystick_ joystick(JOYSTICK_DEFAULT_REPORT_ID,
   false, false, false, false, false, false,
   false, false, false, false, false);
 
+#include <Joystick.h>  // Assuming you're using a Joystick library
+#include <RotaryEncoder.h>  // Assuming you're using a Rotary Encoder library
+
+Joystick joystick; // Create joystick object
+RotaryEncoder encoder(pin1, pin2); // Define your pins for the rotary encoder
+
 void setup() {
   // Start the joystick functionality
-  joystick.begin();
+  joystick.begin();  // Assuming the joystick object has a begin method
+
+  // Initialize the rotary encoder
+  encoder.begin();  // If your rotary encoder library has this method
+
   // Initialize any additional components or settings
-  rotary_init();
+  rotary_init();  // Make sure this function is defined elsewhere in your code
 }
+
+void loop() {
+  // Your main code goes here
+}
+
 
 void loop() {
   // Continuously check the state of all buttons
