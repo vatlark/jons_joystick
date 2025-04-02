@@ -30,27 +30,12 @@ Joystick_ joystick(JOYSTICK_DEFAULT_REPORT_ID,
   false, false, false, false, false, false,
   false, false, false, false, false);
 
-#include <Joystick.h>  // Assuming you're using a Joystick library
-#include <RotaryEncoder.h>  // Assuming you're using a Rotary Encoder library
-
-Joystick joystick; // Create joystick object
-RotaryEncoder encoder(pin1, pin2); // Define your pins for the rotary encoder
+// Joystick joystick; // Create joystick object
 
 void setup() {
   // Start the joystick functionality
   joystick.begin();  // Assuming the joystick object has a begin method
-
-  // Initialize the rotary encoder
-  encoder.begin();  // If your rotary encoder library has this method
-
-  // Initialize any additional components or settings
-  rotary_init();  // Make sure this function is defined elsewhere in your code
 }
-
-void loop() {
-  // Your main code goes here
-}
-
 
 void loop() {
   // Continuously check the state of all buttons
